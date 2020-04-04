@@ -3,6 +3,10 @@ package demo.poker.pokergame.domain;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
+/* Currently this class has no use.
+ * Was implemented as part of my plan to later add a GUI and allow actual play.
+ * */
+
 public class Game {
     private static final Game INSTANCE = new Game();
     private static final Set<Player> PLAYERS = new LinkedHashSet<>();

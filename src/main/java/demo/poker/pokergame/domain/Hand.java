@@ -34,33 +34,22 @@ public class Hand implements Comparable<Hand>{
                 return this.threeAndFourOfAKindTieBreaker(rank.getValue()) - o.threeAndFourOfAKindTieBreaker(o.rank.getValue());
             } else if (rank == RANK.FULL_HOUSE) {
                 return this.threeAndFourOfAKindTieBreaker(3) - o.threeAndFourOfAKindTieBreaker(3);
-            } else if (rank == RANK.FLUSH || rank == RANK.HIGH_CARD) {
-                // need to loop through each value till we either run out or one of the values is greater than the other
-                Collection<Integer> coll1 = this.highCardTieBreaker();
-                Collection<Integer> coll2 = o.highCardTieBreaker();
-                Iterator<Integer> coll1Iterator = coll1.iterator();
-                Iterator<Integer> coll2Iterator = coll2.iterator();
-                while (coll1Iterator.hasNext() && coll2Iterator.hasNext()) {
-                    int coll1Value = coll1Iterator.next();
-                    int coll2Value = coll2Iterator.next();
-                    if (coll1Value != coll2Value) {
-                        return coll1Value - coll2Value;
-                    }
-                }
-                return 0;
             } else {
-                // need to loop through each value till we either tun out or one of the values is greater than the other
-                System.out.println("-----------------HERE------------------");
-                Collection<Integer> coll1 = this.pairAndTwoPairTieBreaker();
-                Collection<Integer> coll2 = o.pairAndTwoPairTieBreaker();
+                Collection<Integer> coll1;
+                Collection<Integer> coll2;
+                if (rank == RANK.FLUSH || rank == RANK.HIGH_CARD) {
+                    coll1 = this.highCardTieBreaker();
+                    coll2 = o.highCardTieBreaker();
+                } else {
+                    coll1 = this.pairAndTwoPairTieBreaker();
+                    coll2 = o.pairAndTwoPairTieBreaker();
+                }
                 Iterator<Integer> coll1Iterator = coll1.iterator();
                 Iterator<Integer> coll2Iterator = coll2.iterator();
                 while (coll1Iterator.hasNext() && coll2Iterator.hasNext()) {
                     int coll1Value = coll1Iterator.next();
                     int coll2Value = coll2Iterator.next();
-                    System.out.println(coll1Value + " " + coll2Value);
                     if (coll1Value != coll2Value) {
-                        System.out.println("------------NOT EQUAL---------------");
                         return coll1Value - coll2Value;
                     }
                 }

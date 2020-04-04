@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 public class Card implements Comparable<Card>{
-    private SUIT suit;
-    private VALUE value;
+    private final SUIT suit;
+    private final VALUE value;
 
     @Override
     public int compareTo(Card o) {

@@ -4,6 +4,10 @@ import org.springframework.stereotype.Component;
 
 import java.util.*;
 
+/* Currently this class has no use.
+* Was implemented as part of my plan to later add a GUI and allow actual play
+* */
+
 @Component
 public class Deck {
     private final List<Card> cards;
