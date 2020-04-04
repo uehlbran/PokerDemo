@@ -1,8 +1,5 @@
-package demo.poker.pokergame.Domain;
+package demo.poker.pokergame.domain;
 
-import demo.poker.pokergame.domain.Card;
-import demo.poker.pokergame.domain.SUIT;
-import demo.poker.pokergame.domain.VALUE;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;

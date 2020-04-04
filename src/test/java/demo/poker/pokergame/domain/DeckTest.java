@@ -1,7 +1,5 @@
-package demo.poker.pokergame.Domain;
+package demo.poker.pokergame.domain;
 
-import demo.poker.pokergame.domain.Card;
-import demo.poker.pokergame.domain.Deck;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
