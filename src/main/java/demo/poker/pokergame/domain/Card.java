@@ -3,7 +3,7 @@ package demo.poker.pokergame.domain;
 import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
-public class Card implements Comparable<Card>{
+public final class Card implements Comparable<Card>{
     private final SUIT suit;
     private final VALUE value;
 

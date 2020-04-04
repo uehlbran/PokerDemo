@@ -9,7 +9,7 @@ import java.util.*;
 * */
 
 @Component
-public class Deck {
+public final class Deck {
     private final List<Card> cards;
     private final Set<Card> cardSet = new HashSet<>(52);
 

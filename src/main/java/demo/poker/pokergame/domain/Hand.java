@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 
 @Data
 @NoArgsConstructor
-public class Hand implements Comparable<Hand>{
+public final class Hand implements Comparable<Hand>{
     @Setter(value = AccessLevel.NONE)
     private final List<Card> cards = new ArrayList<>();
     private RANK rank;
@@ -59,14 +59,14 @@ public class Hand implements Comparable<Hand>{
         return this.getRank().getValue() - o.getRank().getValue();
     }
 
-    public boolean isConsecutive() {
+    private boolean isConsecutive() {
         for(int i = 1; i < cards.size(); i++) {
             if (cards.get(i - 1).getValue() + 1 != cards.get(i).getValue()) return false;
         }
         return true;
     }
 
-    public Map<SUIT, Integer> countSuits() {
+    private Map<SUIT, Integer> countSuits() {
         Map<SUIT, Integer> suits = new HashMap<>();
         for(Card card : cards) {
             if (suits.containsKey(card.getSuit())) suits.put(card.getSuit(), suits.get(card.getSuit()) + 1);
@@ -75,7 +75,7 @@ public class Hand implements Comparable<Hand>{
         return suits;
     }
 
-    public Map<Integer, Integer> countValues() {
+    private Map<Integer, Integer> countValues() {
         Map<Integer, Integer> values = new HashMap<>();
         for (Card card : cards) {
             if (values.containsKey(card.getValue())) values.put(card.getValue(), values.get(card.getValue()) + 1);
@@ -108,22 +108,22 @@ public class Hand implements Comparable<Hand>{
        }
     }
 
-    public Integer highestCardTieBreaker() {
+    private Integer highestCardTieBreaker() {
         return Collections.max(cards).getValue();
     }
 
-    public Integer threeAndFourOfAKindTieBreaker(int count) {
+    private Integer threeAndFourOfAKindTieBreaker(int count) {
         for (Map.Entry<Integer, Integer> set : countValues().entrySet()) {
             if (set.getValue() == count) return set.getKey() * count;
         }
         throw new RuntimeException("Unable to find correct values");
     }
 
-    public Collection<Integer> highCardTieBreaker() {
+    private Collection<Integer> highCardTieBreaker() {
         return countValues().keySet().stream().sorted((o1, o2) -> o2 - o1).collect(Collectors.toList());
     }
 
-    public Collection<Integer> pairAndTwoPairTieBreaker() {
+    private Collection<Integer> pairAndTwoPairTieBreaker() {
         List<Integer> results = new ArrayList<>(countValues().values());
         Collections.sort(results);
         Collections.reverse(results);

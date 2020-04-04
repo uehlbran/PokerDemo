@@ -8,7 +8,7 @@ import lombok.*;
 
 @Data
 @AllArgsConstructor
-public class Player {
+public final class Player {
     private String name = "";
     @Setter(value = AccessLevel.NONE)
     private Hand hand;
